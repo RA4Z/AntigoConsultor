@@ -1,0 +1,10 @@
+INSERT INTO cards VALUES (
+null,
+"ABC",
+"WEC - IMPLANTAÇÃO DE EDI CLIENTE XYZ",
+"Andamento",
+"00/00/0000",
+"00/00/0000",
+120,
+60
+);

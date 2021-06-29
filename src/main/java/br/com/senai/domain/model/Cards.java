@@ -1,6 +1,7 @@
 package br.com.senai.domain.model;
 
 import br.com.senai.domain.service.ValidationGroups;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,24 +21,40 @@ import javax.validation.groups.Default;
 @Getter
 @Setter
 @Entity
-public class Pessoa {
+public class Cards {
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @NotNull(groups = ValidationGroups.ClienteId.class)
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
     long id;
 
-    @NotBlank
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @Size(max = 60)
+    String secao;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Size(max = 60)
     String nome;
 
-    @NotBlank
-    @Email
-    @Size(min = 5)
-    String email;
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @Size(max = 30)
+    String status;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @Size(max = 50)
+    String dataInicio;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @Size(max = 50)
+    String dataEstimada;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    @Size(max = 50)
+    String horasEstimadas;
 
     @NotBlank
-    @Size(min = 12)
-    String telefone;
+    @Size(max = 50)
+    String horasApontadas;
 
 }
