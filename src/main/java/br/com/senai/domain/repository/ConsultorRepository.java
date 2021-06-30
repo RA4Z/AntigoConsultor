@@ -9,8 +9,4 @@ import java.util.List;
 @Repository
 public interface ConsultorRepository extends JpaRepository<Consultor, Long> {
 
-    List<Consultor> findByNome(String nome);
-
-    List<Consultor> findByNomeContaining(String nome);
-
 }

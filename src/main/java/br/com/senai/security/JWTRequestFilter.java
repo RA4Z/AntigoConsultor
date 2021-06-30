@@ -1,6 +1,7 @@
 package br.com.senai.security;
 
 import lombok.AllArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -18,11 +19,11 @@ import java.io.IOException;
 @Component
 public class JWTRequestFilter extends OncePerRequestFilter {
 
-    private JWTUtil jwtUtil;
-    private ImplementsUserDetailsService implementsUserDetailsService;
+    private final JWTUtil jwtUtil;
+    private final ImplementsUserDetailsService implementsUserDetailsService;
 
     @Override
-    protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
+    protected void doFilterInternal(HttpServletRequest httpServletRequest, @NotNull HttpServletResponse httpServletResponse, @NotNull FilterChain filterChain) throws ServletException, IOException {
         final String authorizationHeader = httpServletRequest.getHeader("Authorization");
 
         String userName = null;

@@ -1,7 +1,6 @@
 package br.com.senai.domain.service;
 
 import br.com.senai.api.assembler.CardsAssembler;
-import br.com.senai.api.model.CardsDTO;
 import br.com.senai.domain.exception.NegocioException;
 import br.com.senai.domain.model.Cards;
 import br.com.senai.domain.repository.CardsRepository;
@@ -15,8 +14,7 @@ import java.util.List;
 @Service
 public class CardsService {
 
-    private CardsRepository cardsRepository;
-    private CardsAssembler cardsAssembler;
+    private final CardsRepository cardsRepository;
 
     public Cards buscar(Long cardId) {
         return cardsRepository.findById(cardId)
@@ -25,6 +23,7 @@ public class CardsService {
     public List<Cards> listar() {
         return cardsRepository.findAll();
     }
+    
     public List<Cards> listarNomeContaining( String nomeContaining) {
         return cardsRepository.findByNomeContaining(nomeContaining);
        }

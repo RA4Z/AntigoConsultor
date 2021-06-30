@@ -49,10 +49,6 @@ public class Cards {
     @Size(max = 50)
     String dataEstimada;
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    @Size(max = 50)
-    String horasEstimadas;
-
     @NotBlank
     @Size(max = 50)
     String horasApontadas;

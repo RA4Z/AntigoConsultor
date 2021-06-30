@@ -21,7 +21,7 @@ public class Problema {
     @AllArgsConstructor
     @Getter
     public static class Campo{
-        private String nome;
-        private String mensagem;
+        private final String nome;
+        private final String mensagem;
     }
 }

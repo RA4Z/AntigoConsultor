@@ -20,15 +20,8 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private ImplementsUserDetailsService implementsUserDetailsService;
-    private JWTRequestFilter jwtRequestFilter;
-
-    private static final String[] AUTH_LIST = {
-            "/",
-            "/cards",
-            "/cards/{cardId}",
-            "/cards/nome/containing/{cardId}"
-    };
+    private final ImplementsUserDetailsService implementsUserDetailsService;
+    private final JWTRequestFilter jwtRequestFilter;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -43,7 +36,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .deleteCookies("token").invalidateHttpSession(true);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
-        ;
     }
 
     @Override
@@ -65,4 +57,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/botstrap/**", "style/**");
     }
+
 }

@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class LoginController {
 
-    private AuthenticationManager authenticationManager;
-    private ImplementsUserDetailsService implementsUserDetailsService;
-    private JWTUtil jwtUtil;
+    private final AuthenticationManager authenticationManager;
+    private final ImplementsUserDetailsService implementsUserDetailsService;
+    private final JWTUtil jwtUtil;
 
     @PostMapping("/authenticate")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody Usuario usuario) throws Exception {

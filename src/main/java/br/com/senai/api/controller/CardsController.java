@@ -1,6 +1,5 @@
 package br.com.senai.api.controller;
 
-import br.com.senai.api.model.CardsDTO;
 import br.com.senai.domain.model.Cards;
 import br.com.senai.domain.repository.CardsRepository;
 import br.com.senai.domain.service.CardsService;
@@ -20,8 +19,8 @@ import java.util.Optional;
 public class
 CardsController {
 
-    private CardsRepository cardsRepository;
-    private CardsService cardsService;
+    private final CardsRepository cardsRepository;
+    private final CardsService cardsService;
 
     @GetMapping()
     public List<Cards> listar() {
@@ -52,7 +51,6 @@ CardsController {
         cards.setStatus(cardzin.get().getStatus());
         cards.setSecao(cardzin.get().getSecao());
         cards.setNome(cardzin.get().getNome());
-        cards.setHorasEstimadas(cardzin.get().getHorasEstimadas());
         cards.setDataInicio(cardzin.get().getDataInicio());
         cards.setDataEstimada(cardzin.get().getDataEstimada());
 

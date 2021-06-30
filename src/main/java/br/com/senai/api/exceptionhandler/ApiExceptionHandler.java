@@ -2,6 +2,7 @@ package br.com.senai.api.exceptionhandler;
 
 import br.com.senai.domain.exception.NegocioException;
 import lombok.AllArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpHeaders;
@@ -23,10 +24,11 @@ import java.util.List;
 @ControllerAdvice
 public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 
-    private MessageSource messageSource;
+    private final MessageSource messageSource;
 
+    @NotNull
     @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, @NotNull HttpHeaders headers, @NotNull HttpStatus status, @NotNull WebRequest request) {
 
         List<Problema.Campo> campos = new ArrayList<>();
         for(ObjectError error : ex.getBindingResult().getAllErrors()) {
